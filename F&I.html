@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spicy Food Online Shop - Kerupuk Pedas</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff8f3;
+    color: #3a2301;
+    line-height: 1.6;
+  }
+  a {
+    color: #e03e36;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+  }
+  header {
+    padding: 1rem 0 1rem;
+    text-align: center;
+  }
+  .text-logo {
+    font-weight: 900;
+    font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+    font-size: 3.3rem;
+    letter-spacing: 0.06em;
+    color: #d93025;
+    text-shadow:
+      2px 2px 0 #ff704d,
+      4px 4px 2px #b73716,
+      1px 1px 6px #e04d35aa;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    color: #d93025;
+    margin-bottom: 0.2rem;
+    font-weight: 900;
+    text-shadow: 1.5px 1.5px 3px #aa311e90;
+  }
+  header p {
+    font-size: 1.1rem;
+    color: #7d3800;
+    font-style: italic;
+    margin-top: 0;
+  }
+
+  /* Products Section */
+  section.products {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .product-card {
+    background: #fae3d1;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px #d96e5b88;
+    padding: 1.5rem;
+    width: 260px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+  }
+  .product-card h3 {
+    color: #c63622;
+    margin-bottom: 0.6rem;
+  }
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 1px 2px 8px #bb3e2380;
+  }
+  .price {
+    margin: 1rem 0 0.5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #b9311f;
+  }
+  .rental-info {
+    background: #ff704d6b;
+    color: #5b1500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 0.6rem;
+  }
+
+  /* Order Form */
+  section.order {
+    margin-top: 4rem;
+    background: #fff4ec;
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px #d86f507b;
+  }
+  section.order h2 {
+    margin-top: 0;
+    color: #c32a11;
+    font-size: 2rem;
+    text-align: center;
+  }
+  form {
+    margin-top: 1.5rem;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: #732400;
+  }
+  input[type="text"],
+  select,
+  input[type="number"] {
+    width: 100%;
+    padding: 0.55rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #d1684f;
+    outline-color: #e14c31;
+    transition: border-color 0.25s ease;
+  }
+  input[type="text"]:focus,
+  select:focus,
+  input[type="number"]:focus {
+    border-color: #b62700;
+  }
+  .price-display {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #b52500;
+  }
+  button.pesan-btn {
+    display: block;
+    background-color: #d92d13;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 0.85rem 0;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    margin-top: 2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #b01900a0;
+    transition: background-color 0.25s ease;
+  }
+  button.pesan-btn:hover {
+    background-color: #bb220d;
+  }
+
+  /* Comments Section */
+  section.comments {
+    margin-top: 4rem;
+    background: #fff0e6;
+    padding: 1.8rem 2rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px #d0603e88;
+  }
+  section.comments h2 {
+    margin-top: 0;
+    color: #c63200;
+    font-size: 1.9rem;
+    text-align: center;
+  }
+  .comment-list {
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+  .comment {
+    background: #ffd5c3;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 8px #c140170f;
+  }
+  .comment strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #842200;
+  }
+  .comment-text {
+    white-space: pre-wrap;
+  }
+  form.comment-form {
+    margin-top: 1rem;
+  }
+  form.comment-form label {
+    font-weight: 600;
+    color: #8b2a0f;
+    margin-bottom: 0.25rem;
+  }
+  textarea {
+    width: 100%;
+    min-height: 70px;
+    border-radius: 8px;
+    border: 1.5px solid #cc6e49;
+    resize: vertical;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    outline-color: #c2492b;
+    transition: border-color 0.25s ease;
+  }
+  textarea:focus {
+    border-color: #a73a18;
+  }
+  button.add-comment-btn {
+    margin-top: 0.8rem;
+    background-color: #d34010;
+    color: white;
+    font-weight: 700;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px #a828070f;
+    transition: background-color 0.25s ease;
+  }
+  button.add-comment-btn:hover {
+    background-color: #a62f08;
+  }
+
+  /* Responsive */
+  @media (max-width: 650px) {
+    section.products {
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="text-logo" aria-label="Logo Hot F dan I">Hot F&amp;I</div>
+      <h1>Kerupuk Seblak & Rafael</h1>
+      <p>Jajanan kekinian rasanya mantab pedasnya bikin nagih! Tunggu apalagi? Beli 2 cuman 10k!</p>
+    </header>
+
+    <section class="products" aria-label="Daftar produk">
+      <article class="product-card" id="product-seblak">
+        <img
+          src="https://i.imgur.com/opHoo06.jpeg"
+          alt="Kerupuk Seblak Pedas"
+          class="product-image"
+          loading="lazy"
+        />
+        <h3>Kerupuk Seblak</h3>
+        <p>Kerupuk pedas renyah dengan cita rasa khas seblak yang menggoda.</p>
+        <div class="price">Harga: Rp 6.000 / pcs</div>
+        <div class="rental-info">Tersedia dalam jumlah terbatas</div>
+      </article>
+
+      <article class="product-card" id="product-rafeal">
+        <img
+          src="https://i.imgur.com/bG8GM2M.jpeg"
+          alt="Kerupuk Rafeal Pedas"
+          class="product-image"
+          loading="lazy"
+        />
+        <h3>Kerupuk Rafeal</h3>
+        <p>Kerupuk dengan rasa pedas level berbeda, cocok untuk pencinta tantangan.</p>
+        <div class="price">Harga: Rp 6.000 / pcs</div>
+        <div class="rental-info">Tersedia dalam jumalh terbatas</div>
+      </article>
+    </section>
+
+    <section class="order" aria-label="Formulir pemesanan">
+      <h2>Pesan Sekarang</h2>
+      <form id="orderForm" onsubmit="return handleOrder(event)">
+        <label for="userName">Nama Anda</label>
+        <input type="text" id="userName" name="userName" placeholder="Masukkan nama Anda" required />
+
+        <label for="productSelect">Pilih Produk</label>
+        <select id="productSelect" name="productSelect" required>
+          <option value="" disabled selected>Pilih produk</option>
+          <option value="seblak" data-price="6000">Kerupuk Seblak - Rp 6.000</option>
+          <option value="rafeal" data-price="6000">Kerupuk Rafeal - Rp 6.000</option>
+        </select>
+
+        <label for="orderQty">Jumlah Pesanan</label>
+        <input type="number" id="orderQty" name="orderQty" min="1" value="1" required />
+
+        <div class="price-display" id="totalPriceDisplay">Total Harga: Rp 0</div>
+
+        <button type="submit" class="pesan-btn">Pesan Sekarang</button>
+      </form>
+    </section>
+
+    <section class="comments" aria-label="Komentar konsumen">
+      <h2>Komentar Konsumen</h2>
+      <div class="comment-list" id="commentList" aria-live="polite" aria-relevant="additions"></div>
+      <form id="commentForm" class="comment-form" onsubmit="return handleAddComment(event)">
+        <label for="commentUserName">Nama</label>
+        <input type="text" id="commentUserName" name="commentUserName" placeholder="Nama Anda" required />
+
+        <label for="commentText">Komentar</label>
+        <textarea id="commentText" name="commentText" placeholder="Tulis komentar Anda di sini..." required></textarea>
+
+        <button type="submit" class="add-comment-btn">Tambah Komentar</button>
+      </form>
+    </section>
+  </div>
+
+<script>
+  const productSelect = document.getElementById('productSelect');
+  const orderQty = document.getElementById('orderQty');
+  const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+
+  function updatePrice() {
+    const selectedOption = productSelect.options[productSelect.selectedIndex];
+    if (!selectedOption || !productSelect.value) {
+      totalPriceDisplay.textContent = "Total Harga: Rp 0";
+      return;
+    }
+    const price = Number(selectedOption.dataset.price);
+    const qty = Number(orderQty.value) > 0 ? Number(orderQty.value) : 0;
+    const total = price * qty;
+    totalPriceDisplay.textContent = "Total Harga: Rp " + total.toLocaleString('id-ID');
+  }
+
+  productSelect.addEventListener('change', updatePrice);
+  orderQty.addEventListener('input', updatePrice);
+
+  // Initialize price display
+  updatePrice();
+
+  // Handle order submission
+  function handleOrder(event) {
+    event.preventDefault();
+
+    const userName = event.target.userName.value.trim();
+    const productValue = event.target.productSelect.value;
+    const productOption = event.target.productSelect.options[event.target.productSelect.selectedIndex];
+    const productName = productOption ? productOption.text.split(' - ')[0] : '';
+    const pricePerUnit = productOption ? Number(productOption.dataset.price) : 0;
+    const orderQtyVal = Number(event.target.orderQty.value);
+
+    if (!userName || orderQtyVal <= 0 || !productValue) {
+      alert('Mohon isi semua data pemesanan dengan benar.');
+      return;
+    }
+
+    const totalPrice = pricePerUnit * orderQtyVal;
+    const message = `Halo, saya ingin memesan:\n- Nama: ${userName}\n- Produk: ${productName}\n- Jumlah: ${orderQtyVal}\n- Total Harga: Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+    // Open WhatsApp chat with the message encoded
+    const phoneNumber = '6285742667155'; // WA number with country code (Indonesia)
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  }
+
+  // Comments handling with localStorage
+
+  const commentList = document.getElementById('commentList');
+  const commentForm = document.getElementById('commentForm');
+
+  // Predefined bot comments
+  const botComments = [
+    { name: "Nsn07", text: "Kerupuk Seblak-nya benar-benar bikin lidah terbakar, mantap!" },
+    { name: "fahmi88", text: "Rafeal pedasnya pas banget, recommended buat yang suka tantangan rasa." },
+    { name: "iriana65", text: "Order kemarin datang tepat waktu dan rasanya juara!" }
+  ];
+
+  function loadComments() {
+    // Load user comments
+    const userComments = JSON.parse(localStorage.getItem('spicyFoodComments') || '[]');
+
+    // Combine bot and user comments
+    const allComments = [...botComments, ...userComments];
+
+    commentList.innerHTML = '';
+    if (allComments.length === 0) {
+      commentList.innerHTML = '<p>Belum ada komentar. Jadilah yang pertama!</p>';
+      return;
+    }
+    for (const c of allComments) {
+      const commentEl = document.createElement('div');
+      commentEl.classList.add('comment');
+      commentEl.innerHTML = `<strong>${escapeHtml(c.name)}</strong><div class="comment-text">${escapeHtml(c.text)}</div>`;
+      commentList.appendChild(commentEl);
+    }
+  }
+
+  function handleAddComment(event) {
+    event.preventDefault();
+    const name = event.target.commentUserName.value.trim();
+    const text = event.target.commentText.value.trim();
+
+    if (!name || !text) {
+      alert('Mohon isi nama dan komentar.');
+      return;
+    }
+
+    const comments = JSON.parse(localStorage.getItem('spicyFoodComments') || '[]');
+    comments.push({name: name, text: text});
+    localStorage.setItem('spicyFoodComments', JSON.stringify(comments));
+
+    event.target.reset();
+    loadComments();
+  }
+
+
+  // Simple escape function to prevent HTML injection
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (m) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[m]);
+  }
+
+  // Load comments on page load
+  loadComments();
+</script>
+</body>
+</html>
+
+
